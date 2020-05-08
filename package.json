@@ -24,7 +24,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "test:api:coverage": "nx test api --code-coverage --no-cache"
+    "test:api:coverage": "nx test api --code-coverage --no-cache",
+    "debug:api": "nx serve api --port 4234"
   },
   "private": true,
   "dependencies": {
