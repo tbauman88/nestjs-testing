@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import {
   ExpectedTeamMemberShape,
-  VehiklMakeService
-} from '../VehiklMakeService.interface';
+  OfficeService
+} from '../OfficeService.interface';
 
 export const kwKey = 'kw';
 export const kwValue: ExpectedTeamMemberShape[] = [
@@ -27,13 +27,13 @@ export const rawKWValue: RawKW[] = [
 ];
 
 @Injectable()
-export class KWMakeService implements VehiklMakeService {
+export class KWOfficeService implements OfficeService {
   private loadMembers() {
     return rawKWValue;
   }
 
   private mapToExpected(data: RawKW[]): ExpectedTeamMemberShape[] {
-    return data.map((raw) => ({
+    return data.map(raw => ({
       name: `${raw.firstName} ${raw.lastName}`,
       office: kwKey
     }));

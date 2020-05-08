@@ -1,20 +1,20 @@
-import { INestApplication } from "@nestjs/common";
-import { Test, TestingModule } from "@nestjs/testing";
+import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import {
   forestCityKey,
-  forestCityValue,
-} from "./makes/forest-city/forest-city-make.service";
-import { kwKey, kwValue } from "./makes/kw/kw-make.service";
-import { VehiklModule } from "./vehikl.module";
-import { VehiklService } from "./vehikl.service";
+  forestCityValue
+} from './offices/forest-city/forest-city.service';
+import { kwKey, kwValue } from './offices/kw/kw.service';
+import { VehiklModule } from './vehikl.module';
+import { VehiklService } from './vehikl.service';
 
-describe("VehiklService", () => {
+describe('VehiklService', () => {
   let service: VehiklService;
   let app: INestApplication;
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [VehiklModule.forRoot()],
+      imports: [VehiklModule.forRoot()]
     }).compile();
 
     app = module.createNestApplication();
@@ -23,7 +23,7 @@ describe("VehiklService", () => {
     service = module.get<VehiklService>(VehiklService);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(service).toBeDefined();
   });
 

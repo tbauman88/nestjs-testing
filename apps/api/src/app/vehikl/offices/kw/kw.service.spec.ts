@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { KWMakeService } from './kw-make.service';
+import { KWOfficeService } from './kw.service';
 
-describe('KWMakeService', () => {
-  let service: KWMakeService;
+describe('KWOfficeService', () => {
+  let service: KWOfficeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [KWMakeService]
+      providers: [KWOfficeService]
     }).compile();
 
-    service = module.get<KWMakeService>(KWMakeService);
+    service = module.get<KWOfficeService>(KWOfficeService);
   });
 
   it('should be defined', () => {
