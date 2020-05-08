@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { VehiklModule } from './vehikl/vehikl.module';
+import { VehiklModule } from '../modules/vehikl/vehikl.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
