@@ -1,5 +1,4 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
 .envrc
 # compiled output
 /dist
@@ -24,6 +23,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/launch.json.example
 
 # misc
 /.sass-cache

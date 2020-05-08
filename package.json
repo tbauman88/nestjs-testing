@@ -24,35 +24,38 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "test:api:coverage": "nx test api --code-coverage --no-cache"
+    "test:api:coverage": "nx test api --code-coverage --no-cache",
+    "debug:api": "nx serve api --port 4234"
   },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^6.8.3",
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
-    "@nrwl/nest": "^9.2.4",
-    "@nrwl/workspace": "9.2.4",
-    "@types/node": "~8.9.4",
-    "dotenv": "6.2.0",
-    "eslint": "6.8.0",
-    "prettier": "1.19.1",
-    "ts-node": "~7.0.0",
-    "tslint": "~6.0.0",
-    "typescript": "~3.8.3",
-    "@nrwl/jest": "9.2.4",
-    "jest": "25.2.3",
-    "@types/jest": "25.1.4",
-    "ts-jest": "25.2.1",
-    "@nrwl/node": "9.2.4",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3",
     "@nrwl/eslint-plugin-nx": "9.2.4",
-    "@typescript-eslint/parser": "2.19.2",
+    "@nrwl/jest": "9.2.4",
+    "@nrwl/nest": "^9.2.4",
+    "@nrwl/node": "9.2.4",
+    "@nrwl/workspace": "9.2.4",
+    "@types/jest": "25.1.4",
+    "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "2.19.2",
-    "eslint-config-prettier": "6.0.0"
+    "@typescript-eslint/parser": "2.19.2",
+    "dotenv": "6.2.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "25.2.3",
+    "prettier": "^2.0.5",
+    "ts-jest": "25.2.1",
+    "ts-node": "~7.0.0",
+    "tslint": "~6.0.0",
+    "typescript": "~3.8.3"
   }
 }
