@@ -1,13 +1,17 @@
-import * as request from "supertest";
-import { Test } from "@nestjs/testing";
-import { INestApplication } from "@nestjs/common";
-import { VehiklModule } from "./vehikl.module";
+import * as request from 'supertest';
+import { Test } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import { VehiklModule } from './vehikl.module';
 import {
   forestCityKey,
   forestCityValue,
-} from "./makes/forest-city/forest-city-make.service";
-import { kwKey, kwValue } from "./makes/kw/kw-make.service";
-import { UnknownMakeError } from "./vehikl.controller";
+} from './makes/forest-city/forest-city-make.service';
+import { kwKey, kwValue } from './makes/kw/kw-make.service';
+import {
+  hammerSquadKey,
+  hammerSquadValue,
+} from './makes/hammer-squad/hammer-squad-make.service';
+import { UnknownMakeError } from './vehikl.controller';
 
 const vehiklProviderScenarios = [
   {
@@ -18,16 +22,20 @@ const vehiklProviderScenarios = [
     key: kwKey,
     value: kwValue,
   },
+  {
+    key: hammerSquadKey,
+    value: hammerSquadValue,
+  },
 ];
 
-const unknownProviderKey = "unknownDude";
+const unknownProviderKey = 'unknownDude';
 const UnprocessableEntityErrorExpect = (make: string) => ({
   statusCode: 422,
-  error: "Unprocessable Entity",
+  error: 'Unprocessable Entity',
   message: UnknownMakeError(make),
 });
 
-describe("Vehikl", () => {
+describe('Vehikl', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
