@@ -1,15 +1,15 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 import {
-  VehiklMakeService,
-  ExpectedTeamMemberShape,
-} from "../VehiklMakeService.interface";
+  OfficeService,
+  ExpectedTeamMemberShape
+} from '../OfficeService.interface';
 
-export const hammerSquadKey = "hammer-squad";
+export const hammerSquadKey = 'hammer-squad';
 export const hammerSquadValue: ExpectedTeamMemberShape[] = [
   {
-    name: "Brian",
-    office: hammerSquadKey,
-  },
+    name: 'Brian',
+    office: hammerSquadKey
+  }
 ];
 
 interface RawHammerSquad {
@@ -20,21 +20,21 @@ interface RawHammerSquad {
 
 export const rawHammerSquadValue: RawHammerSquad[] = [
   {
-    employee: "Brian",
+    employee: 'Brian',
     weight: 100,
-    wellFormed: false,
-  },
+    wellFormed: false
+  }
 ];
 @Injectable()
-export class HammerSquadMakeService implements VehiklMakeService {
+export class HammerSquadOfficeService implements OfficeService {
   private fetchVehikls() {
     return rawHammerSquadValue;
   }
 
   private mapToExpected(data: RawHammerSquad[]): ExpectedTeamMemberShape[] {
-    return data.map((raw) => ({
+    return data.map(raw => ({
       name: raw.employee,
-      office: hammerSquadKey,
+      office: hammerSquadKey
     }));
   }
 

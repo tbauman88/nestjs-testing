@@ -1,14 +1,14 @@
-import * as request from "supertest";
-import { Test } from "@nestjs/testing";
-import { INestApplication } from "@nestjs/common";
-import { AppModule } from "./app.module";
+import * as request from 'supertest';
+import { Test } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import { AppModule } from './app.module';
 
-describe("Apps", () => {
+describe('Apps', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AppModule]
     }).compile();
 
     app = moduleRef.createNestApplication();
@@ -16,12 +16,9 @@ describe("Apps", () => {
   });
 
   it(`/GET root`, () => {
-    return request(app.getHttpServer())
-      .get("/")
-      .expect(200)
-      .expect({
-        message: "Welcome to api!",
-      });
+    return request(app.getHttpServer()).get('/').expect(200).expect({
+      message: 'Welcome to api!'
+    });
   });
 
   afterAll(async () => {

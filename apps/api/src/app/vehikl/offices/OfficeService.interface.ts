@@ -1,4 +1,4 @@
-import { Makes } from "./VehiklMakeProviders";
+import { Offices } from './OfficeProviders';
 
 /**
  * The goal of this repository is to demonstrate dynamic service providers that abstract the
@@ -6,9 +6,9 @@ import { Makes } from "./VehiklMakeProviders";
  */
 export interface ExpectedTeamMemberShape {
   name: string;
-  office: Makes;
+  office: Offices;
 }
 
-export interface VehiklMakeService {
+export interface OfficeService {
   getVehikls: () => ExpectedTeamMemberShape[];
 }

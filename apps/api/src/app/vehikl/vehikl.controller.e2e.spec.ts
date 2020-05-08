@@ -4,35 +4,35 @@ import { INestApplication } from '@nestjs/common';
 import { VehiklModule } from './vehikl.module';
 import {
   forestCityKey,
-  forestCityValue,
-} from './makes/forest-city/forest-city-make.service';
-import { kwKey, kwValue } from './makes/kw/kw-make.service';
+  forestCityValue
+} from './offices/forest-city/forest-city.service';
+import { kwKey, kwValue } from './offices/kw/kw.service';
 import {
   hammerSquadKey,
-  hammerSquadValue,
-} from './makes/hammer-squad/hammer-squad-make.service';
-import { UnknownMakeError } from './vehikl.controller';
+  hammerSquadValue
+} from './offices/hammer-squad/hammer-squad.service';
+import { UnknownOfficeError } from './vehikl.controller';
 
 const vehiklProviderScenarios = [
   {
     key: forestCityKey,
-    value: forestCityValue,
+    value: forestCityValue
   },
   {
     key: kwKey,
-    value: kwValue,
+    value: kwValue
   },
   {
     key: hammerSquadKey,
-    value: hammerSquadValue,
-  },
+    value: hammerSquadValue
+  }
 ];
 
 const unknownProviderKey = 'unknownDude';
-const UnprocessableEntityErrorExpect = (make: string) => ({
+const UnprocessableEntityErrorExpect = (office: string) => ({
   statusCode: 422,
   error: 'Unprocessable Entity',
-  message: UnknownMakeError(make),
+  message: UnknownOfficeError(office)
 });
 
 describe('Vehikl', () => {
@@ -40,7 +40,7 @@ describe('Vehikl', () => {
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [VehiklModule.forRoot()],
+      imports: [VehiklModule.forRoot()]
     }).compile();
 
     app = moduleRef.createNestApplication();

@@ -1,15 +1,15 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 import {
-  VehiklMakeService,
-  ExpectedTeamMemberShape,
-} from "../VehiklMakeService.interface";
+  OfficeService,
+  ExpectedTeamMemberShape
+} from '../OfficeService.interface';
 
-export const forestCityKey = "forest-city";
+export const forestCityKey = 'forest-city';
 export const forestCityValue: ExpectedTeamMemberShape[] = [
   {
-    name: "Jesse Carter",
-    office: forestCityKey,
-  },
+    name: 'Jesse Carter',
+    office: forestCityKey
+  }
 ];
 
 interface RawForestCity {
@@ -20,22 +20,22 @@ interface RawForestCity {
 
 export const rawForestCityValue: RawForestCity[] = [
   {
-    firstName: "Jesse",
-    lastName: "Carter",
-    goodAtPingPong: false,
-  },
+    firstName: 'Jesse',
+    lastName: 'Carter',
+    goodAtPingPong: false
+  }
 ];
 
 @Injectable()
-export class ForestCityMakeService implements VehiklMakeService {
+export class ForestCityOfficeService implements OfficeService {
   private loadMembers() {
     return rawForestCityValue;
   }
 
   private maptoExpected(data: RawForestCity[]): ExpectedTeamMemberShape[] {
-    return data.map((raw) => ({
+    return data.map(raw => ({
       name: `${raw.firstName} ${raw.lastName}`,
-      office: forestCityKey,
+      office: forestCityKey
     }));
   }
 
