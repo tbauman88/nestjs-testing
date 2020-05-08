@@ -1,5 +1,7 @@
 # NestjsTesting
 
+![CI](https://github.com/tbauman88/nestjs-testing/workflows/CI/badge.svg)
+
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
