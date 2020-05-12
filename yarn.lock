@@ -321,6 +321,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@golevelup/nestjs-discovery@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@golevelup/nestjs-discovery/-/nestjs-discovery-2.3.0.tgz#ffa92da2db84720f7461dfbd76cdcb0e542a8f05"
+  integrity sha512-l4L2FIKtJnpd4ZjjEKQqy5EKGLXIbTdEHmFvMs+QCELOl1rTcfgmgNDjQFBtNyH6iGseOR3gWNGZ4wmL/lzudg==
+  dependencies:
+    lodash "^4.17.15"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.0.0.tgz#10602de5570baea82f8afbfa2630b24e7a8cfe5b"

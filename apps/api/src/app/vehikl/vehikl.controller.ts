@@ -5,7 +5,7 @@ import {
   UnprocessableEntityException
 } from '@nestjs/common';
 import { VehiklService } from './vehikl.service';
-import { Offices, offices } from './offices/OfficeProviders';
+import { Offices, offices } from './offices/Offices.fixture';
 
 export const UnknownOfficeError = (office: string) =>
   `Unknown office ${office}`;

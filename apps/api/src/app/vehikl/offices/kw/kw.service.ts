@@ -3,6 +3,7 @@ import {
   ExpectedTeamMemberShape,
   OfficeService
 } from '../OfficeService.interface';
+import { Office } from '../../../decorators/Office.decorator';
 
 export const kwKey = 'kw';
 export const kwValue: ExpectedTeamMemberShape[] = [
@@ -26,6 +27,7 @@ export const rawKWValue: RawKW[] = [
   }
 ];
 
+@Office(kwKey)
 @Injectable()
 export class KWOfficeService implements OfficeService {
   private loadMembers() {

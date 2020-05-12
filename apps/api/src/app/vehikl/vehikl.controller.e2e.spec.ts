@@ -40,7 +40,7 @@ describe('Vehikl', () => {
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [VehiklModule.forRoot()]
+      imports: [VehiklModule]
     }).compile();
 
     app = moduleRef.createNestApplication();

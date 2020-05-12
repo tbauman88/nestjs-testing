@@ -1,4 +1,4 @@
-import { Offices } from './OfficeProviders';
+import { Offices } from './Offices.fixture';
 
 /**
  * The goal of this repository is to demonstrate dynamic service providers that abstract the

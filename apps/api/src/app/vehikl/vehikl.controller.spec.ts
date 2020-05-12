@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { VehiklController } from './vehikl.controller';
 import { VehiklService } from './vehikl.service';
 import { UnprocessableEntityException } from '@nestjs/common';
-import { offices, Offices } from './offices/OfficeProviders';
+import { offices, Offices } from './offices/Offices.fixture';
 
 const vehiklServiceMock = jest.genMockFromModule<VehiklService>(
   './vehikl.service'
