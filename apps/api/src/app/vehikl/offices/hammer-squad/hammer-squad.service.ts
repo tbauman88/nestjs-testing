@@ -3,6 +3,7 @@ import {
   OfficeService,
   ExpectedTeamMemberShape
 } from '../OfficeService.interface';
+import { Office } from '../../../decorators/Office.decorator';
 
 export const hammerSquadKey = 'hammer-squad';
 export const hammerSquadValue: ExpectedTeamMemberShape[] = [
@@ -25,6 +26,8 @@ export const rawHammerSquadValue: RawHammerSquad[] = [
     wellFormed: false
   }
 ];
+
+@Office(hammerSquadKey)
 @Injectable()
 export class HammerSquadOfficeService implements OfficeService {
   private fetchVehikls() {

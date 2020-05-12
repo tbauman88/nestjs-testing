@@ -14,7 +14,7 @@ describe('VehiklService', () => {
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [VehiklModule.forRoot()]
+      imports: [VehiklModule]
     }).compile();
 
     app = module.createNestApplication();

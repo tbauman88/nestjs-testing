@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { OfficeService } from './offices/OfficeService.interface';
-import { ModuleRef } from '@nestjs/core';
+import { OfficeServiceFactory } from './offices/OfficeService.factory';
 
 @Injectable()
 export class VehiklService {
-  constructor(private readonly moduleRef: ModuleRef) {}
+  constructor(private readonly officeServiceFactory: OfficeServiceFactory) {}
 
   getVehikls(office: string) {
-    const service = this.moduleRef.get<OfficeService>(office);
-    return service.getVehikls();
+    return this.officeServiceFactory.getOffice(office).getVehikls();
   }
 }

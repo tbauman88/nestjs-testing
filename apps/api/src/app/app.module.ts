@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [VehiklModule.forRoot()],
+  imports: [VehiklModule],
   controllers: [AppController],
   providers: [AppService]
 })

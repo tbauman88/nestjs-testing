@@ -3,6 +3,7 @@ import {
   OfficeService,
   ExpectedTeamMemberShape
 } from '../OfficeService.interface';
+import { Office } from '../../../decorators/Office.decorator';
 
 export const forestCityKey = 'forest-city';
 export const forestCityValue: ExpectedTeamMemberShape[] = [
@@ -26,6 +27,7 @@ export const rawForestCityValue: RawForestCity[] = [
   }
 ];
 
+@Office(forestCityKey)
 @Injectable()
 export class ForestCityOfficeService implements OfficeService {
   private loadMembers() {
