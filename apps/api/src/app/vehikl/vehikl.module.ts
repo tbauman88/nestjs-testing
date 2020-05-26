@@ -9,6 +9,7 @@ import { DiscoveryModule, DiscoveryService } from '@golevelup/nestjs-discovery';
 import { OfficeServiceFactory } from './offices/OfficeService.factory';
 import { OFFICE_FACTORY } from '../decorators/OfficeFactory.decorator';
 import { OfficeService } from './offices/OfficeService.interface';
+import { TeamMemberResolver } from './team-member/team-member.resolver';
 
 @Module({
   imports: [DiscoveryModule],
@@ -18,7 +19,8 @@ import { OfficeService } from './offices/OfficeService.interface';
     VehiklService,
     ForestCityOfficeService,
     KWOfficeService,
-    HammerSquadOfficeService
+    HammerSquadOfficeService,
+    TeamMemberResolver
   ]
 })
 export class VehiklModule implements OnModuleInit {
