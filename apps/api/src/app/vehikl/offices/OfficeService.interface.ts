@@ -1,14 +1,6 @@
-import { Offices } from './Offices.fixture';
-
-/**
- * The goal of this repository is to demonstrate dynamic service providers that abstract the
- * "how" data is acquired or it's actual shape and allows for a single controller and service entrypoint with a consistent output.
- */
-export interface ExpectedTeamMemberShape {
-  name: string;
-  office: Offices;
-}
+import { TeamMember } from '../team-member/TeamMember';
 
 export interface OfficeService {
-  getVehikls: () => ExpectedTeamMemberShape[];
+  getVehikls: () => TeamMember[];
+  getTeamMember: (id: string) => Promise<TeamMember>;
 }

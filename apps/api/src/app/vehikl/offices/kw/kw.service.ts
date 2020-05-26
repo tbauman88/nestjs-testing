@@ -1,29 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import {
-  ExpectedTeamMemberShape,
-  OfficeService
-} from '../OfficeService.interface';
+import { OfficeService } from '../OfficeService.interface';
 import { Office } from '../../../decorators/Office.decorator';
+import {
+  TeamMember,
+  Office as OfficeLocation
+} from '../../team-member/TeamMember';
 
 export const kwKey = 'kw';
-export const kwValue: ExpectedTeamMemberShape[] = [
+export const kwValue: TeamMember[] = [
   {
+    id: 'beardz-mcgee',
     name: 'Alex Barry',
-    office: kwKey
+    office: OfficeLocation.KW,
+    favouriteColor: 'yellow',
+    playsPingpong: false
   }
 ];
 
 interface RawKW {
+  id: number;
   firstName: string;
   lastName: string;
   strengthOfBeard: number;
+  playsPingPong: boolean;
 }
 
 export const rawKWValue: RawKW[] = [
   {
+    id: 420,
     firstName: 'Alex',
     lastName: 'Barry',
-    strengthOfBeard: 85
+    strengthOfBeard: 85,
+    playsPingPong: false
   }
 ];
 
@@ -34,15 +42,27 @@ export class KWOfficeService implements OfficeService {
     return rawKWValue;
   }
 
-  private mapToExpected(data: RawKW[]): ExpectedTeamMemberShape[] {
-    return data.map(raw => ({
-      name: `${raw.firstName} ${raw.lastName}`,
-      office: kwKey
-    }));
+  private mapToExpected(data: RawKW): TeamMember {
+    if (!data) {
+      throw new Error('Data is undefined');
+    }
+    return {
+      name: `${data.firstName} ${data.lastName}`,
+      id: `${data.id}`,
+      office: OfficeLocation.FC,
+      favouriteColor: null,
+      playsPingpong: data.playsPingPong
+    };
   }
 
   public getVehikls() {
     const raw = this.loadMembers();
-    return this.mapToExpected(raw);
+    return raw.map(this.mapToExpected);
+  }
+
+  public async getTeamMember(id: string) {
+    return this.mapToExpected(
+      rawKWValue.find(member => member.id === parseInt(id))
+    );
   }
 }
