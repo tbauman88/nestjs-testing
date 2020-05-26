@@ -24,6 +24,22 @@
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Current Jest Test",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "-i",
+        "--no-cache",
+        "--watchAll",
+        "--codeCoverage=false",
+        "${fileBasenameNoExtension}",
+        "--config=${workspaceFolder}/apps/api/jest.config.js"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
