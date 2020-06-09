@@ -3,15 +3,19 @@ import { VehiklController } from './vehikl.controller';
 import { VehiklService } from './vehikl.service';
 import { UnprocessableEntityException } from '@nestjs/common';
 import { offices, Offices } from './offices/Offices.fixture';
+import { TeamMember, Office } from './team-member/TeamMember';
 
 const vehiklServiceMock = jest.genMockFromModule<VehiklService>(
   './vehikl.service'
 );
 
-const sampleExpectedMembers = (office: Offices) => [
+const sampleExpectedMembers = (office: Office): TeamMember[] => [
   {
     name: 'test',
-    office: office
+    office: office,
+    favouriteColour: 'cornflowerblue',
+    id: 'test',
+    playsPingpong: false
   }
 ];
 
@@ -29,7 +33,7 @@ describe('Vehikl Controller', () => {
 
     controller = module.get<VehiklController>(VehiklController);
 
-    vehiklServiceMock.getVehikls = jest.fn((office: Offices) =>
+    vehiklServiceMock.getVehikls = jest.fn((office: Office) =>
       sampleExpectedMembers(office)
     );
   });
@@ -43,17 +47,20 @@ describe('Vehikl Controller', () => {
   });
 
   it('shouldnt invoke getVehikls when office is not supported', () => {
-    expect(() => controller.getVehikls('six' as Offices)).toThrow(
+    expect(() => controller.getVehikls('six' as Office)).toThrow(
       UnprocessableEntityException
     );
 
     expect(vehiklServiceMock.getVehikls).not.toBeCalled();
   });
 
-  it.each(offices)('should pass when office is supported %p', office => {
-    expect(controller.getVehikls(office)).toEqual(
-      sampleExpectedMembers(office)
-    );
-    expect(vehiklServiceMock.getVehikls).toBeCalledTimes(1);
-  });
+  it.each(Object.keys(Office).map(k => Office[k]))(
+    'should pass when office is supported %p',
+    office => {
+      expect(controller.getVehikls(office)).toEqual(
+        sampleExpectedMembers(office)
+      );
+      expect(vehiklServiceMock.getVehikls).toBeCalledTimes(1);
+    }
+  );
 });

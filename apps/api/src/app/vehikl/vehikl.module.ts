@@ -21,7 +21,8 @@ import { TeamMemberResolver } from './team-member/team-member.resolver';
     KWOfficeService,
     HammerSquadOfficeService,
     TeamMemberResolver
-  ]
+  ],
+  exports: [VehiklService]
 })
 export class VehiklModule implements OnModuleInit {
   constructor(private readonly discover: DiscoveryService) {}
