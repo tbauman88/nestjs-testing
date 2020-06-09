@@ -12,7 +12,7 @@ export const forestCityValue: TeamMember[] = [
     id: 'ping',
     name: 'Jesse Carter',
     office: OfficeLocation.FC,
-    favouriteColor: null,
+    favouriteColour: null,
     playsPingpong: true
   }
 ];
@@ -45,7 +45,7 @@ export class ForestCityOfficeService implements OfficeService {
       id: data.id,
       name: `${data.firstName} ${data.lastName}`,
       office: OfficeLocation.FC,
-      favouriteColor: null,
+      favouriteColour: null,
       playsPingpong: data.goodAtPingPong != null
     };
   }

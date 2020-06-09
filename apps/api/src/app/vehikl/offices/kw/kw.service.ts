@@ -9,10 +9,10 @@ import {
 export const kwKey = 'kw';
 export const kwValue: TeamMember[] = [
   {
-    id: 'beardz-mcgee',
+    id: '420',
     name: 'Alex Barry',
     office: OfficeLocation.KW,
-    favouriteColor: 'yellow',
+    favouriteColour: 'yellow',
     playsPingpong: false
   }
 ];
@@ -49,8 +49,8 @@ export class KWOfficeService implements OfficeService {
     return {
       name: `${data.firstName} ${data.lastName}`,
       id: `${data.id}`,
-      office: OfficeLocation.FC,
-      favouriteColor: null,
+      office: OfficeLocation.KW,
+      favouriteColour: data.strengthOfBeard > 10 ? 'yellow' : 'pink',
       playsPingpong: data.playsPingPong
     };
   }

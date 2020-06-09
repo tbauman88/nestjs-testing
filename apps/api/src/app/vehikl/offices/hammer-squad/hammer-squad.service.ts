@@ -11,7 +11,7 @@ export const hammerSquadValue: TeamMember[] = [
   {
     name: 'Brian',
     office: OfficeLocation.HAM,
-    favouriteColor: 'brown',
+    favouriteColour: 'brown',
     id: 'bfh',
     playsPingpong: null
   }
@@ -54,7 +54,7 @@ export class HammerSquadOfficeService implements OfficeService {
       id: data.id,
       name: `${data.employee}`,
       office: OfficeLocation.HAM,
-      favouriteColor: data.favourites.color,
+      favouriteColour: data.favourites.color,
       playsPingpong: null
     };
   }

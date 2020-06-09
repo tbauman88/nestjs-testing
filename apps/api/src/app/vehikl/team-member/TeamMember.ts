@@ -42,5 +42,5 @@ export class TeamMember {
     description: 'Their favourite color',
     nullable: true
   })
-  favouriteColor: string | null;
+  favouriteColour: string | null;
 }

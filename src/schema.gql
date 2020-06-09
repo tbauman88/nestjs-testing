@@ -31,5 +31,5 @@ type TeamMember {
   playsPingpong: Boolean
 
   """Their favourite color"""
-  favouriteColor: String
+  favouriteColour: String
 }
