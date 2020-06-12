@@ -34,7 +34,7 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/graphql": "^7.3.11",
     "@nestjs/platform-express": "^6.8.3",
-    "apollo-server-express": "^2.13.1",
+    "apollo-server-express": "^2.14.2",
     "reflect-metadata": "^0.1.13",
     "supertest": "^4.0.2"
   },
