@@ -29,7 +29,12 @@ export class VehiklController {
     summary: 'Retrieve all team members for a given office',
     tags: ['vehikl']
   })
-  @ApiParam({ name: 'office', type: () => Office })
+  @ApiParam({
+    name: 'office',
+    type: () => Office,
+    example: 'forest-city',
+    enum: Object.keys(Office).map(k => Office[k])
+  })
   @ApiOkResponse({
     description: 'Valid Office key provided and returning team members',
     type: [TeamMember]
