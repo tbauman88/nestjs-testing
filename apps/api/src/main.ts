@@ -13,8 +13,10 @@ const globalPrefix = 'api';
 const port = process.env.PORT || 3333;
 
 const options = new DocumentBuilder()
-  .setTitle('SourceDay Supplier API Middleware')
-  .setDescription('Middleware description')
+  .setTitle('Vehikl Unified Office Manager API')
+  .setDescription(
+    'Middleware API to various VEHIKL OFfice Management Softwares'
+  )
   .setVersion('1.0')
   .addServer('http://')
   .addTag('vehikl')
