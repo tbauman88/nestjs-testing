@@ -1,29 +1,37 @@
-import { Injectable } from '@nestjs/common';
-import {
-  ExpectedTeamMemberShape,
-  OfficeService
-} from '../OfficeService.interface';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { OfficeService } from '../OfficeService.interface';
 import { Office } from '../../../decorators/Office.decorator';
+import {
+  TeamMember,
+  Office as OfficeLocation
+} from '../../team-member/TeamMember';
 
 export const kwKey = 'kw';
-export const kwValue: ExpectedTeamMemberShape[] = [
+export const kwValue: TeamMember[] = [
   {
+    id: '420',
     name: 'Alex Barry',
-    office: kwKey
+    office: OfficeLocation.KW,
+    favouriteColour: 'yellow',
+    playsPingpong: false
   }
 ];
 
 interface RawKW {
+  id: number;
   firstName: string;
   lastName: string;
   strengthOfBeard: number;
+  playsPingPong: boolean;
 }
 
 export const rawKWValue: RawKW[] = [
   {
+    id: 420,
     firstName: 'Alex',
     lastName: 'Barry',
-    strengthOfBeard: 85
+    strengthOfBeard: 85,
+    playsPingPong: false
   }
 ];
 
@@ -34,15 +42,27 @@ export class KWOfficeService implements OfficeService {
     return rawKWValue;
   }
 
-  private mapToExpected(data: RawKW[]): ExpectedTeamMemberShape[] {
-    return data.map(raw => ({
-      name: `${raw.firstName} ${raw.lastName}`,
-      office: kwKey
-    }));
+  private mapToExpected(data: RawKW): TeamMember {
+    return {
+      name: `${data.firstName} ${data.lastName}`,
+      id: `${data.id}`,
+      office: OfficeLocation.KW,
+      favouriteColour: data.strengthOfBeard > 10 ? 'yellow' : 'pink',
+      playsPingpong: data.playsPingPong
+    };
   }
 
   public getVehikls() {
     const raw = this.loadMembers();
-    return this.mapToExpected(raw);
+    return raw.map(this.mapToExpected);
+  }
+
+  public async getTeamMember(id: string) {
+    const member = rawKWValue.find(member => member.id === parseInt(id));
+    if (!member) {
+      throw new NotFoundException(`Member by id ${id} not found in K-W`);
+    }
+
+    return this.mapToExpected(member);
   }
 }
