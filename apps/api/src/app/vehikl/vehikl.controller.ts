@@ -2,20 +2,17 @@ import {
   Controller,
   Get,
   Param,
-  UnprocessableEntityException,
-  HttpStatus,
-  NotFoundException
+  UnprocessableEntityException
 } from '@nestjs/common';
-import { VehiklService } from './vehikl.service';
-import { Offices, offices } from './offices/Offices.fixture';
 import {
-  ApiResponse,
-  ApiOperation,
-  ApiOkResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
   ApiParam
 } from '@nestjs/swagger';
-import { TeamMember, Office } from './team-member/TeamMember';
+import { Offices, offices } from './offices/Offices.fixture';
+import { Office, TeamMember } from './team-member/TeamMember';
+import { VehiklService } from './vehikl.service';
 
 export const UnknownOfficeError = (office: string) =>
   `Unknown office ${office}`;

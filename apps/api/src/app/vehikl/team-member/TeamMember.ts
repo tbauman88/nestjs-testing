@@ -12,49 +12,50 @@ registerEnumType(Office, {
   description: 'Office Location'
 });
 
-const id_description = 'Team Member unique id within their office';
-const office_description = 'The office the team member belongs to';
-const name_description = 'Full Name of the Team Member';
-const pingpong_description = 'Indicates whether they play ping pong or not';
+const idDescription = 'Team Member unique id within their office';
+const officeDescription = 'The office the team member belongs to';
+const nameDescription = 'Full Name of the Team Member';
+const pingpongDescription = 'Indicates whether they play ping pong or not';
+
 @ObjectType({
   description:
     'A Team member belongs to an office and only one office. They are implemented uniquely to each office but must satisfy the TeamMember object type when resolved.'
 })
 export class TeamMember {
   @Field({
-    description: id_description
+    description: idDescription
   })
   @ApiProperty({
-    description: id_description
+    description: idDescription
   })
   id: string;
 
   @Field(() => Office, {
-    description: office_description
+    description: officeDescription
   })
   @ApiProperty({
-    description: office_description,
+    description: officeDescription,
     example: 'forest-city'
   })
   office: Office;
 
   @Field({
-    description: name_description
+    description: nameDescription
   })
   @ApiProperty({
     example: 'MikingTheViking',
-    description: name_description
+    description: nameDescription
   })
   name: string;
 
   @Field({
-    description: pingpong_description,
+    description: pingpongDescription,
     defaultValue: false,
     nullable: true
   })
   @ApiProperty({
     example: true,
-    description: pingpong_description
+    description: pingpongDescription
   })
   playsPingpong: boolean;
 

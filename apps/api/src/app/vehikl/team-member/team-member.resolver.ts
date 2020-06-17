@@ -1,6 +1,5 @@
 import { Query, Resolver, Args } from '@nestjs/graphql';
 import { TeamMember, Office } from './TeamMember';
-import { Offices } from '../offices/Offices.fixture';
 import { VehiklService } from '../vehikl.service';
 
 @Resolver(of => TeamMember)
