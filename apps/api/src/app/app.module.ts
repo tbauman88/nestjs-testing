@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { VehiklModule } from './vehikl/vehikl.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 
@@ -16,8 +14,6 @@ import { join } from 'path';
       installSubscriptionHandlers: false
     }),
     VehiklModule
-  ],
-  controllers: [AppController],
-  providers: [AppService]
+  ]
 })
 export class AppModule {}

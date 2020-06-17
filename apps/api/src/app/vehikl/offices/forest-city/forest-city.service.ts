@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { OfficeService } from '../OfficeService.interface';
 import { Office } from '../../../decorators/Office.decorator';
 import {
@@ -57,8 +57,13 @@ export class ForestCityOfficeService implements OfficeService {
   }
 
   public async getTeamMember(id: string) {
-    return this.maptoExpected(
-      rawForestCityValue.find(member => member.id === id)
-    );
+    const member = rawForestCityValue.find(member => member.id === id);
+
+    if (!member) {
+      throw new NotFoundException(
+        `Member by id ${id} not found in Forest City`
+      );
+    }
+    return this.maptoExpected(member);
   }
 }

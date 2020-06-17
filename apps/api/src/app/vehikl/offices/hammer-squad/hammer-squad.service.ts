@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { OfficeService } from '../OfficeService.interface';
 import { Office } from '../../../decorators/Office.decorator';
 import {
@@ -47,9 +47,6 @@ export class HammerSquadOfficeService implements OfficeService {
   }
 
   private mapToExpected(data: RawHammerSquad): TeamMember {
-    if (!data) {
-      throw new Error('Data is undefined');
-    }
     return {
       id: data.id,
       name: `${data.employee}`,
@@ -64,10 +61,15 @@ export class HammerSquadOfficeService implements OfficeService {
 
     return raw.map(this.mapToExpected);
   }
-
   public async getTeamMember(id: string) {
-    return this.mapToExpected(
-      rawHammerSquadValue.find(member => member.id === id)
-    );
+    const member = rawHammerSquadValue.find(member => member.id === id);
+
+    if (!member) {
+      throw new NotFoundException(
+        `Member by id ${id} not found in Hammer Squad`
+      );
+    }
+
+    return this.mapToExpected(member);
   }
 }

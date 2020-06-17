@@ -34,9 +34,12 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/graphql": "^7.3.11",
     "@nestjs/platform-express": "^6.8.3",
+    "@nestjs/swagger": "^4.5.10",
     "apollo-server-express": "^2.13.1",
+    "fastify-swagger": "^2.6.0",
     "reflect-metadata": "^0.1.13",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "@nestjs/schematics": "^6.7.0",

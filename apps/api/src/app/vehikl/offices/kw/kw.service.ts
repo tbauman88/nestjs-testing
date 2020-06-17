@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { OfficeService } from '../OfficeService.interface';
 import { Office } from '../../../decorators/Office.decorator';
 import {
@@ -43,9 +43,6 @@ export class KWOfficeService implements OfficeService {
   }
 
   private mapToExpected(data: RawKW): TeamMember {
-    if (!data) {
-      throw new Error('Data is undefined');
-    }
     return {
       name: `${data.firstName} ${data.lastName}`,
       id: `${data.id}`,
@@ -61,8 +58,11 @@ export class KWOfficeService implements OfficeService {
   }
 
   public async getTeamMember(id: string) {
-    return this.mapToExpected(
-      rawKWValue.find(member => member.id === parseInt(id))
-    );
+    const member = rawKWValue.find(member => member.id === parseInt(id));
+    if (!member) {
+      throw new NotFoundException(`Member by id ${id} not found in K-W`);
+    }
+
+    return this.mapToExpected(member);
   }
 }

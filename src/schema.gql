@@ -18,7 +18,7 @@ A Team member belongs to an office and only one office. They are implemented
 uniquely to each office but must satisfy the TeamMember object type when resolved.
 """
 type TeamMember {
-  """All Team Members must have a unique office id"""
+  """Team Member unique id within their office"""
   id: String!
 
   """The office the team member belongs to"""
